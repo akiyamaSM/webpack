@@ -6,7 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 // const dev = process.env.NODE_ENV === "dev"
 
 
-const dev = true
+const dev = false
 
 let cssLoaders = [
   	{
@@ -69,13 +69,19 @@ let config = {
 		        })
 	      	},
 	      	{
-		        test: /\.(png|jpg|gif)$/,
+		        test: /\.(jpe?g|png|gif|svg)$/,
 		        use: [
 		          	{
 			            loader: 'url-loader',
 			            options: {
 			              	limit: 8192,
 			              	name: '[name].[hash:7].[ext]'
+			            }
+		          	},
+		          	{
+		          		loader: 'img-loader',
+			            options: {
+			            	enabled: !dev,
 			            }
 		          	}
 		        ]
