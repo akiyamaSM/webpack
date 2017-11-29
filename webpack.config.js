@@ -34,6 +34,11 @@ if(!dev) {
 
 
 let config = {
+	resolve: {
+		alias: {
+			
+		}
+	}
 	entry: {
 		app: ['./assets/css/app.scss', './assets/js/app.js']
 	},
