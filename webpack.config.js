@@ -47,11 +47,14 @@ let config = {
 	},
 	watch: dev,
 	output: {
-		path: path.resolve('./dist'),
+		path: path.resolve('./public/assets'),
 		filename: dev ? '[name].js' : '[name].[chunkhash:8].js',
-		publicPath: "/dist/"
+		publicPath: "/assets/"
 	},
 	devtool: dev ? "cheap-module-eval-source-map" : false,
+	devServer: {
+	  	contentBase: path.resolve("./public"),
+	},
 	module: {
 		rules: [
 			{
