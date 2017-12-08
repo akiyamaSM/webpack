@@ -6,7 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 // const dev = process.env.NODE_ENV === "dev"
 
 
-const dev = false
+const dev = true
 
 let cssLoaders = [
   	{
@@ -36,9 +36,12 @@ if(!dev) {
 let config = {
 	resolve: {
 		alias: {
-			
-		}
-	}
+		  	'@': path.resolve('./assets/'),
+		  	'@css': path.resolve('./assets/css/'),
+		  	'@js': path.resolve('./assets/js/'),
+		},
+	},
+	
 	entry: {
 		app: ['./assets/css/app.scss', './assets/js/app.js']
 	},
@@ -51,6 +54,12 @@ let config = {
 	devtool: dev ? "cheap-module-eval-source-map" : false,
 	module: {
 		rules: [
+			{
+				enforce: "pre",
+				test: /\.js$/,
+	      		exclude: /(node_modules|bower_components)/,
+	      		use: ['babel-loader']
+			},
 			{
 				test: /\.js$/,
 	      		exclude: /(node_modules|bower_components)/,

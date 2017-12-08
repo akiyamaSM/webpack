@@ -1,3 +1,5 @@
 export default {
+
+	
 	cache: true
 }
