@@ -115,14 +115,15 @@ let config = {
 	]
 }
 
-let pathsToClean = ['dist']
-let cleanOptions = {
-  	root:     path.resolve('./'),
-  	verbose:  true,
-  	dry:      false
-}
+
 
 if(!dev) {
+	let pathsToClean = ['dist']
+	let cleanOptions = {
+		root:     path.resolve('./'),
+		verbose:  true,
+		dry:      false
+	}
 	config.plugins.push(new UglifyJsPlugin({
 		sourceMap: false
 	}))
